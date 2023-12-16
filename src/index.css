@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+:root {
+  /* Font Size */
+  --primary-font-size: 2.5rem;
+  --secondary-font-size: 1.5rem;
+  --tertiary-font-size: 1rem;
+
+  /* colors */
+  --red: #ee1c25;
+  --white: #fff;
+  --grey: #797575;
+  --black: #212529;
+  --dark-red: #c11921;
+}
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+}
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+  padding: 0;
+}
+.app {
+  margin: 50px;
+}
+.app__title {
+  margin-bottom: 10px;
+}
+.tasklist {
+  margin-top: 20px;
+}
+.task {
+  margin: 12px 0;
+}
+.delete-btn {
+  margin-left: 10px;
+}
+.taskInput {
+  outline: none;
+}
+.css-ac01zx>:not(style) {
+  margin: 0px !important;
+  width: 25ch;
+  margin-top: 1.5rem !important;
+}
+.css-bhp9pd-MuiPaper-root-MuiCard-root {
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.075) !important;
+}
+.css-i4bv87-MuiSvgIcon-root {
+  font-size: 1.7rem !important;
+}
+.css-1xitmdn-MuiButtonBase-root-MuiButton-root {
+  color: var(--white);
+  background-color: var(--red) !important;
+  border: 1px solid var(--red) !important;
+  box-shadow: none !important;
+}
+.css-1xitmdn-MuiButtonBase-root-MuiButton-root:hover {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  background-color: var(--dark-red) !important;
+  box-shadow: none !important;
+}
+.css-tpyati-MuiTypography-root {
+  font-size: 15px !important;
+}
+.css-sghohy-MuiButtonBase-root-MuiButton-root{
+  color: var(--white);
+  background-color: var(--red) !important;
+  border: 1px solid var(--red) !important;
+  box-shadow: none !important;
+}
+.css-sghohy-MuiButtonBase-root-MuiButton-root:hover{
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  background-color: var(--dark-red) !important;
+  box-shadow: none !important;
+}
+.css-1wgcmb5-MuiButtonBase-root-MuiButton-root{
+  color: var(--red) !important;
+  background-color: var(--white) !important;
+  border: 1px solid var(--red) !important;
+}
+.css-1wgcmb5-MuiButtonBase-root-MuiButton-root:hover{
+  color: var(--white) !important;
+  background-color: var(--dark-red) !important;
+  border: 1px solid var(--dark-red) !important;
+}
