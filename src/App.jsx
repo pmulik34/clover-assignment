@@ -5,8 +5,8 @@ import Person2Icon from '@mui/icons-material/Person2';
 import Person3Icon from '@mui/icons-material/Person3';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
-import Helper from "../src/components/helper";
-import FamilyMemberDetails from "../src/components/FamilyMemberDetails";
+import Helper from "./components/FormHelper";
+import ChooseMembers from "./components/ChooseMembers";
 import PersonIcon from '@mui/icons-material/Person';
 import MemberCard from "../src/components/MemberCard";
 
@@ -193,15 +193,15 @@ const App = () => {
         }}>
 
           <MemberCard
-            name={"Self"}
+            memberName={"Self"}
             icon={<PersonIcon />}
-            cardFunction={() => { onClickmember('self') }}
+            onClickHandler={() => { onClickmember('self') }}
             selected={parentMember === "self" ? true : false}
           />
           <MemberCard
-            name={"Family"}
+            memberName={"Family"}
             icon={<GroupIcon />}
-            cardFunction={() => { onClickmember('family') }}
+            onClickHandler={() => { onClickmember('family') }}
             selected={parentMember === "family" ? true : false}
           />
         </Box>
@@ -220,25 +220,25 @@ const App = () => {
           >
 
             <MemberCard
-              name={"Self"}
+              memberName={"Self"}
               values={"self"}
               icon={<PersonIcon />}
-              cardFunction={onClickFamilyMember}
+              onClickHandler={onClickFamilyMember}
               selected={familyMember.self === "self" ? true : false}
             />
             <MemberCard
-              name={"Spouse"}
+              memberName={"Spouse"}
               values={"spouse"}
               icon={<Person2Icon />}
-              cardFunction={onClickFamilyMember}
+              onClickHandler={onClickFamilyMember}
               selected={familyMember.spouse === "spouse" ? true : false}
             />
             <Box>
               <MemberCard
-                name={"Dependant Son"}
+                memberName={"Dependant Son"}
                 values={"dependantSon"}
                 icon={<PersonIcon />}
-                cardFunction={onClickFamilyMember}
+                onClickHandler={onClickFamilyMember}
                 selected={familyMember.dependantSon === "dependantSon" ? true : false}
                 />
               <Card
@@ -272,10 +272,10 @@ const App = () => {
             </Box>
             <Box>
               <MemberCard
-                name={"Dependant Daughter"}
+                memberName={"Dependant Daughter"}
                 values={"dependantDaughter"}
                 icon={<Person3Icon />}
-                cardFunction={onClickFamilyMember}
+                onClickHandler={onClickFamilyMember}
                 selected={familyMember.dependantDaughter === "dependantDaughter" ? true : false}
               />
               <Card
@@ -356,7 +356,7 @@ const App = () => {
       </div>
         :
         <div>
-          <FamilyMemberDetails
+          <ChooseMembers
             parentMember={parentMember}
             familyMember={familyMember}
             phone={phone}

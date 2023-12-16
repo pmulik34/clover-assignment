@@ -1,21 +1,16 @@
-import {
-    Box, Button, TextField, Container, Typography,
-    Card
-} from "@mui/material";
+import {Box, Button, TextField, Container, Typography,Card} from "@mui/material";
 import { useRef } from "react";
 
-const taskSlice = ({ name, icon, cardFunction, selected, values }) => {
-     const inputRef = useRef(null);
+const MemberCard = ({ memberName, icon, onClickHandler, selected, values }) => {
+    const inputRef = useRef(null);
 
-    const parentFunction = () => {
-        const task = inputRef.current.target;
-        console.log("task hioo",inputRef,task,values);
-        cardFunction(values, task)
+    const handleClick = () => {
+        const event = inputRef.current.target;
+        onClickHandler(values, event)
     }
 
     return (
         <>
-
             <Card
                 style={{
                     border: `1px solid ${selected ? '#FF6458' : 'grey'}`,
@@ -27,27 +22,21 @@ const taskSlice = ({ name, icon, cardFunction, selected, values }) => {
                     flexDirection: "column",
                     alignItems: "center",
                     justifyContent: "center",
-                    cursor:'pointer'
+                    cursor: 'pointer'
                 }}
-            onClick={parentFunction}
+                onClick={handleClick}
             >
-                <input 
-                    type="checkbox" 
-                    value={values} 
-                    checked={selected} 
-                    onClick={(e) => { cardFunction(values, e);console.log("hello",values,e) }} 
+                <input
+                    type="checkbox"
+                    value={values}
+                    checked={selected}
+                    onClick={(e) => { onClickHandler(values, e)}}
                     ref={inputRef}
                 />
-                <Box>
-                    {icon}
-                </Box>
-                <Typography sx={{ textAlign: 'center', fontSize: '12px' }}>
-                    {name}
-                </Typography>
-
+                <Box>{icon}</Box>
+                <Typography sx={{ textAlign: 'center', fontSize: '12px' }}>{memberName}</Typography>
             </Card>
-
         </>
     )
 }
-export default taskSlice
+export default MemberCard

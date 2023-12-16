@@ -1,9 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
-import todoReducer from "../components/taskSlice";
+import policyReducer from "../components/policySplice";
 
 const store = configureStore({
   reducer: {
-    todo: todoReducer,
+    policy: policyReducer,
   },
 });
 

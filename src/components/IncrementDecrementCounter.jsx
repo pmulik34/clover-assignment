@@ -1,19 +1,12 @@
-import {
-    Box, Button, TextField, Container, Typography,
-    Card,
-    IconButton
-} from "@mui/material";
+import {Box, Button, TextField, Container, Typography,Card,IconButton} from "@mui/material";
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
 
-
-
-const PlusMinus = (props) => {
-    console.log("props",props);
-    const onPlusClicks = () => {
+const IncrementDecrementCounter = (props) => {
+    const onIncrementClicks = () => {
         props.onPlusClick()
     } 
-    const onMinusClicks = () => {
+    const onDecrementClicks = () => {
         props.onMinusClick()
     } 
     const {onPlusClick, onMinusClick, dependantCount} = props
@@ -33,7 +26,7 @@ const PlusMinus = (props) => {
                 boxShadow:'none'
 
             }}>
-            <RemoveCircleOutlineIcon onClick={onMinusClicks} />
+            <RemoveCircleOutlineIcon onClick={onDecrementClicks} />
             <Card
                 sx={{
                     border:'none',     
@@ -41,10 +34,10 @@ const PlusMinus = (props) => {
                 }}>
                 {props.dependantCount}
             </Card>
-            <IconButton onClick={onPlusClicks}>
+            <IconButton onClick={onIncrementClicks}>
                 <AddCircleOutlineIcon />
             </IconButton>
         </Card>
     )
 }
-export default PlusMinus
+export default IncrementDecrementCounter

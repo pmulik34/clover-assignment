@@ -24,23 +24,12 @@ h4 {
   margin: 0;
   padding: 0;
 }
-.app {
-  margin: 50px;
-}
-.app__title {
-  margin-bottom: 10px;
-}
-.tasklist {
+
+.policylist {
   margin-top: 20px;
-}
-.task {
-  margin: 12px 0;
 }
 .delete-btn {
   margin-left: 10px;
-}
-.taskInput {
-  outline: none;
 }
 .css-ac01zx>:not(style) {
   margin: 0px !important;

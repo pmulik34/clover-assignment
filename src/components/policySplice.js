@@ -4,14 +4,14 @@ const initialState = {
   tasks: [],
 };
 
-const taskSlice = createSlice({
-  name: "todo",
+const policySplice = createSlice({
+  name: "policy",
   initialState,
   reducers: {
-    addTodo: (state, action) => {
+    addpolicy: (state, action) => {
       state.tasks.push(action.payload);
     }, 
-    deleteTodo: (state, action) => {    
+    deletepolicy: (state, action) => {    
       const tasksToDelete = state.tasks.filter((task) => task.name === action.payload.name);    
       state.tasks = state.tasks.filter((task) => task.name !== action.payload.name);
     },
@@ -19,6 +19,6 @@ const taskSlice = createSlice({
   },
 });
 
-export const { addTodo, deleteTodo } = taskSlice.actions;
+export const { addpolicy, deletepolicy } = policySplice.actions;
 
-export default taskSlice.reducer;
+export default policySplice.reducer;
