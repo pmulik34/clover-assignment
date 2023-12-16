@@ -30,135 +30,82 @@ const App = () => {
   const [showMemberDetails, setShowMemberDetails] = useState(false);
 
   useEffect(() => {
-    if (familyMember.self === "self") {
-      setFamilyMember((prevState) => {
-        return {
+    const updateFamilyMember = (key) => {
+      if (familyMember[key] === key) {
+        setFamilyMember((prevState) => ({
           ...prevState,
-          self: familyMember.self,
-        };
-      })
-    }
-    if (familyMember.spouse === "spouse") {
-      setFamilyMember((prevState) => {
-        return {
-          ...prevState,
-          spouse: familyMember.spouse,
-        };
-      })
-    }
-    if (familyMember.dependantSon === "dependantSon") {
-      setFamilyMember((prevState) => {
-        return {
-          ...prevState,
-          dependantSon: familyMember.dependantSon,
-        };
-      })
-    }
-    if (familyMember.dependantDaughter === "dependantDaughter") {
-      setFamilyMember((prevState) => {
-        return {
-          ...prevState,
-          dependantDaughter: familyMember.dependantDaughter,
-        };
-      })
-    }
+          [key]: familyMember[key],
+        }));
+      }
+    };
+    updateFamilyMember("self");
+    updateFamilyMember("spouse");
+    updateFamilyMember("dependantSon");
+    updateFamilyMember("dependantDaughter");
+  }, []);
+  
 
-  }, [])
   const onClickmember = (val) => {
-    if (val === 'self') {
-      setParentMember('self');
-    } else {
-      setParentMember('family');
-    }
-  }
+    setParentMember(val === 'self' ? 'self' : 'family');
+  };
+  
   const onClickFamilyMember = (val, e) => {
-    console.log("val-->", val,e );
-    console.log("val", val,e.target.checked );
-    setFamilyMember((prevState) => {
-      if (val === "self") {
-        return {
-          ...prevState,
-          self: !e.target.checked  ? "" : val,
-        };
-      } else if (val === "spouse") {
-        return {
-          ...prevState,
-          spouse: !e.target.checked  ? "" : val,
-        };
-      } else if (val === "dependantSon") {
-        return {
-          ...prevState,
-          dependantSon: !e.target.checked  ? "" : val,
-        };
-      } else if (val === "dependantDaughter") {
-        return {
-          ...prevState,
-          dependantDaughter: !e.target.checked   ? "" : val,
-        };
-      }
-    });
-  }
+    console.log("val-->", val, e);
+    console.log("val", val, e.target.checked);
+    
+    setFamilyMember((prevState) => ({
+      ...prevState,
+      [val]: e.target.checked ? val : "",
+    }));
+  };
+  
   const handlePhone = (e) => {
-    if (e.target.value.length <= 10) {
-      const phone = e.target.value.trim()
-      setPhone(phone);
-      console.log("Helper.isValidphone(phone)",Helper.isValidphone(phone));
-      if (!Helper.isValidphone(phone)) {
-        setPhoneError('Please enter valid Mobile Number')
-      } else {
-        setPhoneError('')
-      }
-      console.log(e.target.value);
-    }
-  }
+    const phone = e.target.value.trim();
+    setPhone(phone);
+    const isValidPhone = Helper.isValidPhone(phone);    
+    setPhoneError(isValidPhone ? '' : 'Please enter a valid Mobile Number');
+  };
+  
   const validateEmail = (e) => {
     const email = e.target.value.trim();
-    setEmail(email)
-    if (!Helper.validEmail(email)) {
-      setEmailError('Please enter valid email')
-    } else {
-      setEmailError('')
-    }
-  }
-  const onMemberProceed = () => {
-    if (parentMember.trim() === "") {
-      setParentMemberError("Please Select member");
-      return false;
-    }
-    if (phone.trim() === "" || phone.trim().length < 10) {
-      setPhoneError("Please Enter 10 digit number")
-      return false;
-    }
-    if (email.trim() === "") {
-      setEmailError('Please enter valid email')
-      return false;
-    } else {
-      if (parentMember === "self") {
-        setFamilyMember((prevState) => {
-          return {
-            ...prevState,
-            self: "self",
-          };
-        })
-      }
-      setFamilyMember((prevState) => {
-        return {
-          ...prevState,
-          dependantSonCount: dependantSonCount,
-          dependantDaughterCount: dependantDaughterCount,
-        };
-      })
-      setShowMemberDetails(true)
-    }
-  }
-  const onFamilyMemberProceed = () => {
+    setEmail(email);
+    const isValidEmail = Helper.isValidEmail(email);
+    setEmailError(isValidEmail ? '' : 'Please enter a valid email');
+  };
+  
 
+  const onMemberProceed = () => {
+    if (!parentMember.trim()) {
+      setParentMemberError("Please Select a member");
+      return false;
+    }
+    if (!phone.trim() || phone.trim().length < 10) {
+      setPhoneError("Please Enter a 10-digit number");
+      return false;
+    }
+    if (!email.trim()) {
+      setEmailError('Please enter a valid email');
+      return false;
+    }
+    if (parentMember === "self") {
+      setFamilyMember((prevState) => ({ ...prevState, self: "self" }));
+    }
+    setFamilyMember((prevState) => ({
+      ...prevState,
+      dependantSonCount,
+      dependantDaughterCount,
+    }));
+  
+    setShowMemberDetails(true);
+  
+    return true;
+  };
+  
+  const onFamilyMemberProceed = () => {
   }
   const onBackButtonChange = () => {
     setShowMemberDetails(false)
   }
-
-  console.log("familyMember", familyMember);
 
   return (
     <Container className="task-component"
@@ -170,7 +117,6 @@ const App = () => {
         jistifyItems: "center",
         justifyContent: "center",
         height: "100%",
-
       }}
     >
       {!showMemberDetails ? <div className="add-task"
